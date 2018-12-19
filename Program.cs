@@ -38,23 +38,23 @@ namespace ExampleWebServer
 
                 while (true)
                 {
-                    Console.Write("Waiting for a connection... ");
+                     Console.Write("Waiting for a connection... ");
                     TcpClient client = server.AcceptTcpClient();
                     Console.WriteLine("Connected");
 
                     data = null;
                     NetworkStream stream = client.GetStream();
 
+                   
                     int i;
                     while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                     {
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                         Console.Write("{0}", data);
-                    }
 
-                    String body = @"<html><body>Hello world</body></html>";
-                    String response =
-@"HTTP/1.1 200 OK
+                        String body = @"<html><body>Hello world</body></html>";
+                        String response =
+    @"HTTP/1.1 200 OK
 Server: Example
 Accept-Ranges: bytes
 Content-Length: " + body.Length.ToString() + @"
@@ -62,9 +62,14 @@ Content-Type: text/html
 
 " + body;
 
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(response);
-                    stream.Write(msg, 0, msg.Length);
-                    Console.WriteLine("Sent: {0}", response);
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(response);
+                        stream.Write(msg, 0, msg.Length);
+                        Console.WriteLine("Sent: {0}", response);
+
+                    }
+
+
+                    
                     client.Close();
                 }
             }
