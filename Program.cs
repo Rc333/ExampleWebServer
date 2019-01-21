@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-
+ //Test
 namespace ExampleWebServer
 {
     class Program
@@ -16,7 +16,7 @@ namespace ExampleWebServer
             TcpListener server = null;
             try
             {
-            //Test
+
                 string connetionString = "Data Source=54.213.195.209;Initial Catalog=Example;User ID=example;Password=example";
                 SqlConnection cnn = new SqlConnection(connetionString);
                 try
